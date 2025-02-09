@@ -1,0 +1,34 @@
+<?php
+// Afficher les erreurs en développement
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Configuration des sessions AVANT le démarrage
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.save_handler', 'files');
+    ini_set('session.save_path', '/tmp');
+    ini_set('session.gc_maxlifetime', 3600);
+    ini_set('session.cookie_lifetime', 3600);
+    ini_set('session.cookie_secure', 0);
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_strict_mode', 1);
+    ini_set('session.use_cookies', 1);
+    ini_set('session.use_only_cookies', 1);
+    ini_set('session.cache_limiter', 'nocache');
+    session_start();
+}
+
+// Configuration de la base de données
+define('DB_HOST', getenv('DB_HOST') ?: 'db');
+define('DB_USER', getenv('DB_USER') ?: 'user');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'password');
+define('DB_NAME', getenv('DB_NAME') ?: 'app_stock');
+
+// Connexion à la base de données
+$link_db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_NAME);
+if (!$link_db) {
+    error_log("Erreur de connexion MySQL: " . mysqli_connect_error());
+    die("Une erreur est survenue lors de la connexion à la base de données.");
+}
+mysqli_set_charset($link_db, "utf8");

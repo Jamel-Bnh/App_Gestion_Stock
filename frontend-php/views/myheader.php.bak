@@ -1,0 +1,32 @@
+<?php
+// Pas de sortie HTML avant session_start() et les headers
+session_start();
+require_once 'config.php';
+
+// Vérification de l'authentification
+if (!isset($_SESSION['matricule'])) {
+    header('Location: login.php');
+    exit();
+}
+?>
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <div class="thetitle"></div>
+        <div class="user_info">
+            <?php if (isset($_SESSION['user_name'])): ?>
+                <span><?php echo htmlspecialchars($_SESSION['user_name']); ?></span>
+            <?php endif; ?>
+            <a href="logout.php" class="btn btn-danger btn-sm">
+                <i class="fas fa-sign-out-alt"></i> Déconnexion
+            </a>
+        </div>
+    </div>

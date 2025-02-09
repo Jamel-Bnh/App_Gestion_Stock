@@ -1,0 +1,60 @@
+<?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
+// Configuration des sessions AVANT le démarrage
+if (session_status() === PHP_SESSION_NONE) {
+    ini_set('session.save_handler', 'files');
+    ini_set('session.save_path', getenv('SESSION_SAVE_PATH') ?: sys_get_temp_dir());
+    ini_set('session.gc_maxlifetime', 3600);
+    ini_set('session.cookie_lifetime', 3600);
+    ini_set('session.cookie_secure', 0);
+    ini_set('session.cookie_httponly', 1);
+    ini_set('session.use_strict_mode', 1);
+    ini_set('session.use_cookies', 1);
+    ini_set('session.use_only_cookies', 1);
+    ini_set('session.cache_limiter', 'nocache');
+
+    session_name('APP_STOCK_SESSION');
+    session_start();
+}
+
+// Database configuration
+define('DB_SERVER', getenv('DB_HOST') ?: 'db');
+define('DB_USERNAME', getenv('DB_USER') ?: 'user');
+define('DB_PASSWORD', getenv('DB_PASSWORD') ?: 'password');
+define('DB_NAME', getenv('DB_NAME') ?: 'app_stock');
+
+// Attempt to connect to MySQL database using TCP/IP
+$link_db = mysqli_connect(DB_SERVER, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
+// Check connection
+if ($link_db === false) {
+    error_log("ERROR: Could not connect. " . mysqli_connect_error());
+    die("ERROR: Could not connect. " . mysqli_connect_error());
+}
+
+// Function to check user authentication
+function checkAuth() {
+    if (!isset($_SESSION['matricule']) || !isset($_SESSION['user_role'])) {
+        header('Location: login.php');
+        exit();
+    }
+}
+
+// Function to clean old sessions
+function cleanOldSessions() {
+    $session_path = session_save_path();
+    $files = glob($session_path . '/sess_*');
+    $now = time();
+    foreach ($files as $file) {
+        if (is_file($file) && $now - filemtime($file) >= 3600) {
+            @unlink($file);
+        }
+    }
+}
+
+// Clean old sessions
+cleanOldSessions();
+?>

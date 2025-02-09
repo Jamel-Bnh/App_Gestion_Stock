@@ -1,0 +1,117 @@
+.menu_item {
+    width: 261px;
+    height: 97px;
+    background: #0077c0;
+    color: #ffffff;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    margin: 15px;
+    padding: 15px;
+    box-shadow: 3px 3px #212529;
+}
+
+.menu_item:hover {
+    color: #000000;
+}
+
+.menu_item i {
+    font-size: 40px;
+}
+
+.etq_item {
+    font-size: 19px;
+}
+
+.all_menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.msg {
+    position: fixed;
+    width: 450px;
+    top: 18px;
+    left: 36%;
+    display: none;
+}
+
+a.d-flex.side_item {
+    color: #ffffff;
+    text-decoration: none;
+    padding-left: 11px;
+    align-items: center;
+    font-size: 18px;
+    /* margin-bottom: 17px; */
+    /* border: 1px solid; */
+    /* border-bottom: navajowhite; */
+    height: 57px;
+}
+
+a.d-flex.side_item:hover {
+    background: #ffffff;
+    color: #000000;
+}
+
+.tb_users i {
+    cursor: pointer;
+}
+
+.ntf_dem span {
+    width: 27px;
+    height: 27px;
+    background: red;
+    text-align: center;
+    line-height: 27px;
+    border-radius: 50%;
+    font-size: 13px;
+    border: none;
+}
+
+.dv_info {
+    width: 100%;
+    text-align: center;
+    background: #0077c0;
+    height: 46px;
+    margin-bottom: 16px;
+    color: #ffffff;
+    line-height: 46px;
+    font-size: 19px;
+    box-shadow: 3px 3px 2px 0px #000000;
+}
+
+.th_info {
+    margin-top: 25px;
+    width: 100%;
+    /* text-align: center; */
+    background: #0077c0;
+    height: 37px;
+    /* margin-bottom: 16px; */
+    color: #ffffff;
+    /* line-height: 46px; */
+    font-size: 16px;
+    box-shadow: 2px -2px 1px 0px #000000;
+    font-family: monospace;
+    /* margin-bottom: 15px; */
+}
+
+.pa_info {
+    background: #56ff00;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    text-align: center;
+    color: #000000;
+    font-weight: bold;
+    font-family: sans-serif;
+    /* border: 2px solid #ffffff; */
+    line-height: 26px;
+}
+
+.z:hover {
+    color: green;
+}
