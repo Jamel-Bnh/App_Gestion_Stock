@@ -5,43 +5,24 @@ This project is a PHP application that runs in a Docker environment. It consists
 ## Project Structure
 
 ```
-my-php-app :
-
-AppStock_DMSP/
-├── alertmanager/
-├── backups/
-├── db/
-├── docker/
+App_Stock/
 ├── Documentation/
+├── backup_frontend_php/
+├── database/
+├── db/
+├── frontend-php/
 ├── nginx/
-│   └── nginx.conf
-├── prometheus/
-├── src/
-│   └── frontend-php/
-│       ├── controllers/
-│       ├── public/
-│       ├── tests/
-│       ├── views/
-│       │   ├── login.php
-│       │   └── ...
-│       ├── auth.php
-│       ├── config.php
-│       ├── config.php.bak
-│       ├── datain.php
-│       ├── Dockerfile
-│       ├── index.php
-│       ├── init-permissions.sh
-│       ├── js_link.php
-│       ├── menu.php
-│       ├── myheader.php
-│       ├── myheader.php.bak
-│       ├── mysql.cnf
-│       ├── php.ini
-├── docker-compose.yml
 ├── README.md
-├── start.bat
+├── docker-compose.yml
+├── settings.json
+├── start.ps1
 ├── start.sh
 ├── stop.bat
+├── stop.sh
+├── update-code.sh
+├── update.bat
+├── update.ps1
+
 
 
 ## Getting Started
@@ -62,7 +43,7 @@ To get started with this project, you need to have Docker and Docker Compose ins
    docker-compose up --build
    ```
 
-3. Access the application at `http://localhost:8080/login.php`.
+3. Access the application at `http://localhost:8081/login`.
 
 ## Usage
 
